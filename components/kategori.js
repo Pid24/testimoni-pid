@@ -8,12 +8,12 @@ const kategoriList = [
 export default function Kategori() {
   return (
     <section>
-      <h2>Kategori Testimoni</h2>
-      <ul style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>Kategori Testimoni</h2>
+      <ul style={{ display: "flex", gap: "1rem", flexWrap: "wrap", padding: 0, listStyle: "none" }}>
         {kategoriList.map(({ label, slug }) => (
-          <li key={slug}>
-            <Link href={`/kategori/${slug}`}>
-              <span style={buttonStyle}>{label}</span>
+          <li key={slug} style={{ backgroundColor: "transparent", padding: 0, borderRadius: 0 }}>
+            <Link href={`/kategori/${slug}`} style={buttonStyle}>
+              {label}
             </Link>
           </li>
         ))}
@@ -23,13 +23,14 @@ export default function Kategori() {
 }
 
 const buttonStyle = {
-  backgroundColor: "#f3f4f6",
-  padding: "0.5rem 1rem",
-  borderRadius: "8px",
-  border: "1px solid #ccc",
+  backgroundColor: "#e0f2fe",
+  padding: "0.6rem 1.2rem",
+  borderRadius: "10px",
+  border: "1px solid #38bdf8",
+  color: "#0369a1",
+  fontWeight: 600,
   textDecoration: "none",
-  color: "#1e40af",
-  fontWeight: "bold",
-  transition: "all 0.3s",
-  cursor: "pointer",
+  boxShadow: "none", // pastikan nggak ada shadow abu
+  transition: "all 0.2s ease-in-out",
+  display: "inline-block",
 };
