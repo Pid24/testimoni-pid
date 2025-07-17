@@ -7,7 +7,7 @@ export default function KategoriIndex() {
   ];
 
   return (
-    <main>
+    <main style={{ paddingTop: "80px" }}>
       <h1>Kategori Testimoni</h1>
       <ul style={{ display: "flex", gap: "1rem", flexWrap: "wrap", listStyle: "none", padding: 0 }}>
         {kategori.map(({ label, slug }) => (

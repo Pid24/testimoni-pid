@@ -3,19 +3,16 @@ export default function Kontak() {
     <section style={styles.section}>
       <h1 style={styles.heading}>Kontak</h1>
       <ul style={styles.contactList}>
-        <li>
-          <strong>Email:</strong> <a href="mailto:kamu@example.com">kamu@example.com</a>
-        </li>
-        <li>
-          <strong>WhatsApp:</strong>{" "}
-          <a href="https://wa.me/6281234567890" target="_blank">
-            0812-3456-7890
+        <li style={styles.item}>
+          <strong>Email:</strong>{" "}
+          <a href="mailto:rnasifannafie@gmail.com" style={styles.link}>
+            rnasifannafie@gmail.com
           </a>
         </li>
-        <li>
-          <strong>Instagram:</strong>{" "}
-          <a href="https://instagram.com/akunmu" target="_blank">
-            @akunmu
+        <li style={styles.item}>
+          <strong>Twitter:</strong>{" "}
+          <a href="https://x.com/rfdzna" target="_blank" rel="noopener noreferrer" style={styles.link}>
+            @rfdzna
           </a>
         </li>
       </ul>
@@ -26,8 +23,9 @@ export default function Kontak() {
 const styles = {
   section: {
     padding: "2rem",
+    paddingTop: "6rem",
     maxWidth: "600px",
-    margin: "0 auto",
+    margin: "2rem auto",
     backgroundColor: "#f1f5f9",
     borderRadius: "10px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
@@ -43,8 +41,20 @@ const styles = {
     padding: 0,
     display: "flex",
     flexDirection: "column",
-    gap: "1rem",
+    gap: "1.2rem",
     fontSize: "1.1rem",
     color: "#1e293b",
+  },
+  item: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    gap: "0.5rem",
+  },
+  link: {
+    color: "#0f172a",
+    textDecoration: "none",
+    fontWeight: "500",
+    transition: "color 0.3s ease",
   },
 };

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const navItems = [
@@ -7,9 +8,37 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShow(false); // scroll down → hide
+      } else {
+        setShow(true); // scroll up → show
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <nav style={styles.nav}>
-      <div style={styles.logo}>Testimoni</div>
+    <nav
+      style={{
+        ...styles.nav,
+        opacity: show ? 1 : 0,
+        pointerEvents: show ? "auto" : "none",
+        transition: "opacity 0.4s ease-in-out",
+      }}
+    >
+      <div style={styles.logo}>Testimoni Pid</div>
       <ul style={styles.navLinks}>
         {navItems.map(({ label, href }) => (
           <li key={href} style={{ background: "transparent", padding: 0 }}>
@@ -31,9 +60,10 @@ const styles = {
     padding: "0.75rem 2rem",
     backgroundColor: "#1e293b",
     color: "white",
-    position: "sticky",
+    position: "fixed",
     top: 0,
-    zIndex: 50,
+    width: "100%",
+    zIndex: 1000,
   },
   logo: {
     fontSize: "1.3rem",
