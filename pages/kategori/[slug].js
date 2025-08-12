@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Gallery from "../../components/gallery";
 
 const dataGambar = {
-  "grow-a-garden": ["/images/testi-gag-01.jpeg", "/images/testi-gag-02.jpeg", "/images/testi-gag-03.jpeg", "/images/testi-gag-04.jpeg"],
+  "grow-a-garden": ["/images/testi-gag-01.jpeg", "/images/testi-gag-02.jpeg", "/images/testi-gag-03.jpeg", "/images/testi-gag-04.jpeg", "/images/testi-gag-05.jpeg"],
   "jasa-website": [],
 };
 
