@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+const NAV_HEIGHT = 64; // px → samain dengan padding vertikal nav
+
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Kategori", href: "/kategori" },
@@ -14,41 +16,44 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setShow(false); // scroll down → hide
       } else {
         setShow(true); // scroll up → show
       }
-
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
-    <nav
-      style={{
-        ...styles.nav,
-        opacity: show ? 1 : 0,
-        pointerEvents: show ? "auto" : "none",
-        transition: "opacity 0.4s ease-in-out",
-      }}
-    >
-      <div style={styles.logo}>Testimoni Pid</div>
-      <ul style={styles.navLinks}>
-        {navItems.map(({ label, href }) => (
-          <li key={href} style={{ background: "transparent", padding: 0 }}>
-            <Link href={href} style={buttonStyle}>
-              {label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav
+        style={{
+          ...styles.nav,
+          height: NAV_HEIGHT,
+          opacity: show ? 1 : 0,
+          pointerEvents: show ? "auto" : "none",
+          transition: "opacity 0.4s ease-in-out",
+        }}
+      >
+        <div style={styles.logo}>Testimoni Pid</div>
+        <ul style={styles.navLinks}>
+          {navItems.map(({ label, href }) => (
+            <li key={href} style={{ background: "transparent", padding: 0 }}>
+              <Link href={href} style={buttonStyle}>
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Spacer untuk menggeser konten agar tidak ketutup navbar fixed */}
+      <div style={{ height: NAV_HEIGHT }} />
+    </>
   );
 }
 
@@ -62,7 +67,8 @@ const styles = {
     color: "white",
     position: "fixed",
     top: 0,
-    width: "100%",
+    left: 0,
+    right: 0,
     zIndex: 1000,
   },
   logo: {

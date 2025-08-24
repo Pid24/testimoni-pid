@@ -4,7 +4,7 @@ import Gallery from "../../components/gallery";
 
 const dataGambar = {
   "grow-a-garden": ["/images/testi-gag-01.jpeg", "/images/testi-gag-02.jpeg", "/images/testi-gag-03.jpeg", "/images/testi-gag-04.jpeg", "/images/testi-gag-05.jpeg"],
-  "jasa-website": [],
+  "jasa-website": ["/images/testi-web-01.jpeg", "/images/testi-web-01.jpeg", "/images/testi-web-01.jpeg"],
 };
 
 export default function KategoriDetail() {
@@ -13,19 +13,13 @@ export default function KategoriDetail() {
 
   const [showButton, setShowButton] = useState(false);
 
-  // Scroll event listener untuk menampilkan tombol
   useEffect(() => {
-    const handleScroll = () => {
-      setShowButton(window.scrollY > 300);
-    };
-
+    const handleScroll = () => setShowButton(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const gambar = dataGambar[slug] || [];
 
@@ -34,11 +28,10 @@ export default function KategoriDetail() {
   return (
     <>
       <main>
-        <h1>Testimoni {slug.replaceAll("-", " ").toUpperCase()}</h1>
+        <h1>Testimoni {String(slug).replaceAll("-", " ").toUpperCase()}</h1>
         <Gallery gambarTestimoni={gambar} />
       </main>
 
-      {/* Tombol Scroll to Top */}
       {showButton && (
         <button
           onClick={scrollToTop}
@@ -58,10 +51,10 @@ export default function KategoriDetail() {
             transition: "background-color 0.3s ease",
           }}
           onMouseOver={(e) => {
-            e.target.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+            e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
           }}
           onMouseOut={(e) => {
-            e.target.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+            e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
           }}
           aria-label="Scroll to top"
           title="Scroll to top"
